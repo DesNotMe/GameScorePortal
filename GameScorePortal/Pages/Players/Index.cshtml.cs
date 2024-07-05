@@ -46,8 +46,10 @@ namespace GameScorePortal.Pages.Players
                                            select p;
             if (!String.IsNullOrEmpty(searchString))
             {
-                playersIQ = playersIQ.Where(s => s.LastName.Equals(searchString, StringComparison.OrdinalIgnoreCase) ||
-                                                 s.FirstName.Equals(searchString, StringComparison.OrdinalIgnoreCase));
+                //ef.functions.like is SQL's LIKE COMMAND
+                playersIQ = playersIQ.Where(s =>
+                    EF.Functions.Like(s.LastName, $"%{searchString}%") ||
+                    EF.Functions.Like(s.FirstName, $"%{searchString}%"));   
             }
 
             switch (sortOrder)

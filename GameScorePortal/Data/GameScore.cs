@@ -13,8 +13,8 @@ namespace GameScorePortal.Data
         public int PlayerID { get; set; }
         [ForeignKey("PlayerID")]
         public double Score { get; set; }
-        public Game Game { get; set; }
-        public Player Player { get; set; }
+        public Game? Game { get; set; }
+        public Player? Player { get; set; }
 
     }
 }

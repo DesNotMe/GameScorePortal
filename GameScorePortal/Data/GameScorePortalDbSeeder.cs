@@ -35,8 +35,8 @@ namespace GameScorePortal.Data
             var gamescores = new GameScore[]
             {
                 new GameScore{PlayerID=1,GameID=1,Score=12.3},
-                new GameScore{PlayerID = 3,GameID=2,Score=13.5},
-                new GameScore{PlayerID=2,GameID=3,Score=18.4},
+                new GameScore{PlayerID=3,GameID=2,Score=13.5},
+                new GameScore{PlayerID=2,GameID=3,Score=18.4 }
             };
 
             context.GameScores.AddRange(gamescores);

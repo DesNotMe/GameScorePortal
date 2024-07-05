@@ -22,7 +22,7 @@ namespace GameScorePortal.Data
 
         [DisplayName("Joined Date")]
         public DateTime JoinDate { get; set; }
-        public ICollection<GameScore> GameScores { get; set; }
+        public ICollection<GameScore>? GameScores { get; set; }
 
     }
 }

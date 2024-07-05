@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GameScorePortal.Data;
 
-namespace GameScorePortal.Pages.Players
+namespace GameScorePortal.Pages.Game
 {
     public class DetailsModel : PageModel
     {
@@ -18,7 +18,8 @@ namespace GameScorePortal.Pages.Players
             _context = context;
         }
 
-        public Player Player { get; set; } = default!;
+        public GameScorePortal.Data.Game Game { get; set; } = default!;
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,19 +28,19 @@ namespace GameScorePortal.Pages.Players
                 return NotFound();
             }
 
-            var player = await _context.Players
-                .Include(s=> s.GameScores)
-                .ThenInclude(e=>e.Game)
+            var game = await _context.Games
+                .Include(s => s.GameScores)
+                .ThenInclude(e => e.Player)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.PlayerId == id);
+                .FirstOrDefaultAsync(m => m.GameId == id);
 
-            if (player == null)
+            if (game == null)
             {
                 return NotFound();
             }
             else
             {
-                Player = player;
+                Game = game;
             }
             return Page();
         }

@@ -1,5 +1,22 @@
 ﻿@page
-@model GameScorePortal.Pages.AboutModel
-@{
+@model AboutModel
 
-}
+<h2>Player Body Statistics</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Number of Players</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var joinCount in Model.PlayerJoinCounts)
+        {
+            <tr>
+                <td>@joinCount.Date.ToString("d")</td>
+                <td>@joinCount.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
